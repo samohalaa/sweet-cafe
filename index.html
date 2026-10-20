@@ -1,117 +1,233 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Sweet Café</title>
+<title>Sweet Café</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #FFF3F6;
-            margin: 0;
-            color: #714653;
-        }
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FFF0F5;
+    color: #754653;
+    margin: 20px;
+}
 
-        header {
-            background-color: #E8A0B5;
-            text-align: center;
-            padding: 35px;
-            color: white;
-        }
+header {
+    background-color: #E8A0B5;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    border-radius: 15px;
+}
 
-        h1 {
-            font-size: 40px;
-        }
+h1 {
+    font-size: 38px;
+}
 
-        h2 {
-            text-align: center;
-            color: #B65B79;
-        }
+h2 {
+    color: #B65B79;
+    text-align: center;
+}
 
-        .menu {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            padding: 20px;
-        }
+table {
+    width: 100%;
+    background: white;
+    border-collapse: collapse;
+}
 
-        .item {
-            background-color: white;
-            padding: 20px;
-            width: 200px;
-            text-align: center;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px #eacbd4;
-        }
+td, th {
+    border: 1px solid #E8A0B5;
+    padding: 15px;
+    text-align: center;
+}
 
-        .item img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 10px;
-        }
+th {
+    background-color: #F8C8D8;
+}
 
-        button {
-            background-color: #B65B79;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-        }
+img {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 12px;
+}
 
-        button:hover {
-            background-color: #91445f;
-        }
-    </style>
+button {
+    background-color: #D76C91;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
 
+textarea {
+    width: 95%;
+    height: 90px;
+    padding: 10px;
+    border: 1px solid #E8A0B5;
+    border-radius: 10px;
+}
+
+input {
+    margin: 5px;
+}
+
+section {
+    background: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 15px;
+}
+</style>
 </head>
 
 <body>
 
-    <header>
-        <h1>Sweet Café ♡</h1>
-        <p>A little sweetness in every bite</p>
-    </header>
+<header>
+<h1>Sweet Café ♡</h1>
+<p>A little sweetness in every bite!</p>
+</header>
 
-    <h2>Our Sweet Menu</h2>
+<h2>Our Sweet Menu 🍰</h2>
 
-    <div class="menu">
+<form id="myForm">
 
-        <div class="item">
-            <img src="cake.jpg" alt="Strawberry Cake">
-            <h3>Strawberry Cake</h3>
-            <p>Price: ฿89</p>
-            <input type="checkbox"> Select
-        </div>
+<table>
+<tr>
+<th>Strawberry Cake</th>
+<th>Strawberry Milk</th>
+</tr>
 
-        <div class="item">
-            <img src="milk.jpg" alt="Strawberry Milk">
-            <h3>Strawberry Milk</h3>
-            <p>Price: ฿65</p>
-            <input type="checkbox"> Select
-        </div>
+<tr>
+<td>
+<img src="cake.jpg" alt="Cake"><br>
 
-        <div class="item">
-            <img src="macaron.jpg" alt="Macarons">
-            <h3>Macarons</h3>
-            <p>Price: ฿79</p>
-            <input type="checkbox"> Select
-        </div>
+<input type="checkbox" class="food"
+value="Strawberry Cake">
 
-        <div class="item">
-            <img src="brownie.jpg" alt="Brownie">
-            <h3>Brownie</h3>
-            <p>Price: ฿69</p>
-            <input type="checkbox"> Select
-        </div>
+<p>Strawberry Cake</p>
+<p>Price: ฿89</p>
 
-    </div>
+Quantity:
+<input type="number" class="qty"
+min="1" value="1" style="width:60px;">
+</td>
+
+<td>
+<img src="milk.jpg" alt="Milk"><br>
+
+<input type="checkbox" class="food"
+value="Strawberry Milk">
+
+<p>Strawberry Milk</p>
+<p>Price: ฿65</p>
+
+Quantity:
+<input type="number" class="qty"
+min="1" value="1" style="width:60px;">
+</td>
+</tr>
+</table>
+
+<br>
+
+<button type="button" onclick="saveToMessage()">
+Chosen Menu ♡
+</button>
+
+<section>
+<h2>Chosen Menu Items</h2>
+<textarea id="outputMessage" readonly></textarea>
+</section>
+
+<section>
+<h2>Delivery Address</h2>
+<textarea id="address"
+placeholder="Enter your delivery address"></textarea>
+</section>
+
+<section>
+<h2>Order and Address</h2>
+<textarea id="orderAndaddress" readonly></textarea>
+</section>
+
+</form>
+
+<section>
+<h2>Send Order to Email ♡</h2>
+
+<!-- Replace YOUR_FORM_ID with your own Formspree ID -->
+<form action="https://formspree.io/f/YOUR_FORM_ID"
+method="POST">
+
+<label>Your Order:</label><br><br>
+
+<textarea id="order" name="order" readonly></textarea>
+
+<br><br>
+
+<button type="submit">
+Send Order to Email ♡
+</button>
+
+</form>
+</section>
+
+<script>
+
+function saveToMessage() {
+
+let message = "Sweet Café Order\n\n";
+let selected = false;
+
+const foods = document.querySelectorAll(".food");
+
+foods.forEach(function(food) {
+
+if(food.checked) {
+
+selected = true;
+
+const quantity = food.closest("td")
+.querySelector(".qty").value;
+
+const price = food.value === "Strawberry Cake" ? 89 : 65;
+
+message += food.value +
+" | Price: ฿" + price +
+" | Quantity: " + quantity + "\n";
+
+}
+
+});
+
+if(!selected) {
+alert("Please select your menu!");
+return;
+}
+
+const address =
+document.getElementById("address").value;
+
+document.getElementById("outputMessage").value =
+message;
+
+const combined =
+message + "\nDelivery Address:\n" + address;
+
+document.getElementById("orderAndaddress").value =
+combined;
+
+document.getElementById("order").value =
+combined;
+
+}
+
+</script>
 
 </body>
 </html>
